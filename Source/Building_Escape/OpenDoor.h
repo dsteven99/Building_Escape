@@ -20,16 +20,20 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	void OpenDoor(float DeltaTime);
-	void CloseDoor(float DeltaTime);
 
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void OpenDoor(float DeltaTime);
+	void CloseDoor(float DeltaTime);
+	float TotalMassOfActors() const;
 
 private:
 	float InitialYaw;
 	float CurrentYaw;
+
+	UPROPERTY(EditAnywhere)
+	float MassToOpenDoors = 10;
 
 	UPROPERTY(EditAnywhere)
 	float OpenAngle = 90;
